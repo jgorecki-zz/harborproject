@@ -75,30 +75,6 @@ if success:
 	subprocess.call(["git", "push", "-u", "origin", "--all"])
 else:
 	print("Error: couldn't push initial repository for ios app")
-	
-exit()
-
-#print('Renaming: Asterisk to Project')
-#baddies = {'Asterisk',}
-#for path, dirs, files in os.walk(ios_template_dest):
-#	
-#	for f in dirs:
-#		
-#		if [e in f for e in baddies if e in f]:
-#			
-#			file = f.split(".")
-#			
-#			original = "{0}/{1}".format(ios_template_dest, f)
-#			renamed = "{0}/{1}".format(ios_template_dest, "{0}.{1}".format(project_name, file[1]))
-#			
-#			shutil.move(original, renamed)
-#	
-#	for f in files:
-#		
-#		if [e in f for e in baddies if e in f]:
-#			
-#			file = f.split(".")
-#			shutil.move(f, "{0}.{1}".format(project_name, file[1]))
 
 print("Starting: Adding git repos to the cms directory")
 os.chdir(cms_path)
