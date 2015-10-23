@@ -6,9 +6,11 @@ import json
 from sh import git
 from bitbucket.bitbucket import Bitbucket
 
+
 '''
+Version: 0.0.2
 System level Requirements: sh, requests, bitbucket-api, django
-To do: Add a requirements.txt document so that everything
+Next: Add Jira and bitbucket project setup
 '''
 
 bb = Bitbucket("harbordev", "rabbit01")
@@ -16,7 +18,7 @@ bb = Bitbucket("harbordev", "rabbit01")
 edging = 100
 
 script_path = os.path.dirname(os.path.abspath(__file__))
-templates_path = "{0}/harborproject".format(script_path)
+templates_path = "{0}/assets".format(script_path)
 save_path = os.path.join(os.path.expanduser("~"), "Desktop")
 
 project_name = raw_input("Project Name:")
@@ -51,25 +53,52 @@ ios_template_src = "{0}/ios_template/".format(templates_path)
 ios_template_dest = "{0}/{1}".format(ios_path, project_name)
 shutil.copytree(ios_template_src, ios_template_dest)
 
-print('Renaming: Asterisk to Project')
-baddies = {'Asterisk',}
-for path, dirs, files in os.walk(ios_template_dest):
-	
-	for f in dirs:
-		
-		if [e in f for e in baddies if e in f]:
-			
-			file = f.split(".")
-			shutil.move(f, "{0}.{1}".format(project_name, file[1]))
-	
-	for f in files:
-		
-		if [e in f for e in baddies if e in f]:
-			
-			file = f.split(".")
-			shutil.move(f, "{0}.{1}".format(project_name, file[1]))
+print("Reminder: Rename the project!")
 
-exit();
+print('Copying: .gitignore to ios')
+ios_gitignore_src = "{0}/ios.gitignore".format(templates_path)
+ios_gitignore_dest ="{0}/.gitignore".format(ios_path)
+shutil.copy(ios_gitignore_src, ios_gitignore_dest)
+
+print('Starting: Intial git add and commit')
+subprocess.call(['git', 'add', '.'])
+subprocess.call(['git', 'commit', '-m', 'Initial commit'])
+subprocess.call(['git', 'status'])
+
+print('Starting: creating a private repo on bitbucket')
+ios_repo_name = "{0}-iOS".format(project_name)
+success, result = bb.repository.create(ios_repo_name)
+
+if success:
+	print("Starting: pushing initial commit to content to bitbucket")
+	subprocess.call(["git", "remote", "add", "origin", "https://harbordev@bitbucket.org/harbordev/{0}.git".format(ios_repo_name)])
+	subprocess.call(["git", "push", "-u", "origin", "--all"])
+else:
+	print("Error: couldn't push initial repository for ios app")
+	
+exit()
+
+#print('Renaming: Asterisk to Project')
+#baddies = {'Asterisk',}
+#for path, dirs, files in os.walk(ios_template_dest):
+#	
+#	for f in dirs:
+#		
+#		if [e in f for e in baddies if e in f]:
+#			
+#			file = f.split(".")
+#			
+#			original = "{0}/{1}".format(ios_template_dest, f)
+#			renamed = "{0}/{1}".format(ios_template_dest, "{0}.{1}".format(project_name, file[1]))
+#			
+#			shutil.move(original, renamed)
+#	
+#	for f in files:
+#		
+#		if [e in f for e in baddies if e in f]:
+#			
+#			file = f.split(".")
+#			shutil.move(f, "{0}.{1}".format(project_name, file[1]))
 
 print("Starting: Adding git repos to the cms directory")
 os.chdir(cms_path)
@@ -117,7 +146,7 @@ if success:
 	subprocess.call(["git", "remote", "add", "origin", "https://harbordev@bitbucket.org/harbordev/{0}.git".format(cms_repo_name)])
 	subprocess.call(["git", "push", "-u", "origin", "--all"])
 else:
-	print("Error: couldn't push initial repository")
+	print("Error: couldn't push initial repository for cms")
 	
 print("PROJECT SETUP IS COMPLETED - PLEASE REVIEW FOR ISSUES AND FAILURES!")	
 	
