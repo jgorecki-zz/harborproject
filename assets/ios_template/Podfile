@@ -1,0 +1,51 @@
+platform :ios, '8.0'
+
+inhibit_all_warnings!
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+pod 'PromiseKit', '~> 1.5'
+pod 'MagicalRecord', '~> 2.2'
+pod 'AppleGuice', '~> 1.2.4'
+pod 'AutoCoding', '~> 2.2'
+pod 'Instabug'
+
+pod 'Appirater', '~> 2.0'
+pod 'CocoaLumberjack', '~> 2.0'
+pod 'SDWebImage', '~> 3.7'
+pod 'DateTools', '~> 1.4'
+pod 'libextobjc', '~> 0.4'
+pod 'ObjectiveSugar', '~> 1.1'
+pod 'TPKeyboardAvoiding', '~> 1.2'
+pod 'FormatterKit', '~> 1.7'
+pod 'SSPullToRefresh', '~> 1.2'
+pod 'Parse', '~> 1.6'
+pod 'SVWebViewController', '~> 1.0'
+pod 'MFSideMenu'
+pod 'APAvatarImageView'
+pod 'CTAssetsPickerController',  '~> 2.8.0'
+pod 'RMDateSelectionViewController'
+#pod 'FlurrySDK'
+pod 'GoogleAnalytics'
+pod 'Mixpanel', '~> 2.8'
+pod 'Aspects', '~> 1.4'
+pod 'KVOController'
+pod 'MoABContactsManager'
+pod 'JTSImageViewController'
+pod 'UICollectionViewLeftAlignedLayout'
+pod 'Facebook-iOS-SDK', '~> 3.24.0'
+pod 'FXBlurView', '~> 1.6'
+
+pod 'HarborKit', :git=>'https://bitbucket.org/harbordev/harborkit.git'
+
+pod 'Reveal-iOS-SDK', '~> 1.5', :configurations => ['Debug']
+pod 'Instabug'
+
+target :unit_tests, :exclusive => true do
+  link_with 'FavementTests'
+  pod 'Specta'
+  pod 'Expecta'
+  pod 'OCMock'
+  pod 'OHHTTPStubs'
+  pod 'FBSnapshotTestCase/Core'
+end
