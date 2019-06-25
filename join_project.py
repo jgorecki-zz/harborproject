@@ -24,7 +24,7 @@ script_path = os.path.dirname(os.path.abspath(__file__))
 templates_path = "{0}/assets".format(script_path)
 save_path = os.path.join(os.path.expanduser("~"), "Desktop")
 
-project_name = raw_input("Project Name:")
+project_name = raw_input("Existing project to join:")
 
 print("*" * edging)
 
@@ -128,5 +128,3 @@ else:
 	print("Error: couldn't push initial repository for cms")
 	
 print("PROJECT SETUP IS COMPLETED - PLEASE REVIEW FOR ISSUES AND FAILURES!")	
-	
-	

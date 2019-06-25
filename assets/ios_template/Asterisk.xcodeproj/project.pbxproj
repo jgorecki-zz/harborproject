@@ -10,7 +10,7 @@
 		FF3D17481BD978A3008E91EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3D17471BD978A3008E91EF /* main.m */; };
 		FF3D174B1BD978A4008E91EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3D174A1BD978A4008E91EF /* AppDelegate.m */; };
 		FF3D17531BD978A4008E91EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF3D17521BD978A4008E91EF /* Assets.xcassets */; };
-		FF3D175E1BD981D0008E91EF /* StyleSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF3D175D1BD981D0008E91EF /* StyleSettings.plist */; settings = {ASSET_TAGS = (); }; };
+		FF3D175E1BD981D0008E91EF /* StyleSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF3D175D1BD981D0008E91EF /* StyleSettings.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +21,7 @@
 		FF3D17521BD978A4008E91EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		FF3D17571BD978A4008E91EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF3D175D1BD981D0008E91EF /* StyleSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StyleSettings.plist; sourceTree = "<group>"; };
+		FFABE6B61BE27B7E00936DB9 /* Asterisk.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Asterisk.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +38,7 @@
 		FF3D173A1BD978A3008E91EF = {
 			isa = PBXGroup;
 			children = (
+				FFABE6B61BE27B7E00936DB9 /* Asterisk.xcconfig */,
 				FF3D175D1BD981D0008E91EF /* StyleSettings.plist */,
 				FF3D17451BD978A3008E91EF /* Classes */,
 				FF3D17441BD978A3008E91EF /* Products */,

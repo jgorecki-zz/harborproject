@@ -1,0 +1,10 @@
+//
+//  Asterisk.xcconfig
+//  Asterisk
+//
+//  Created by Joseph Gorecki on 10/29/15.
+//  Copyright © 2015 HarborDev. All rights reserved.
+//
+
+PROJECT_NAME = $$PROJECT_NAME
+PROJECT_NAME_SPACE = $$PROJECT_NAME_SPACE

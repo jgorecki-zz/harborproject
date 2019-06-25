@@ -1,0 +1,36 @@
+fastlane_version "2.19.1"
+
+default_platform :ios
+
+platform :ios do
+
+    # https://github.com/fastlane/examples/blob/master/QuizUp/Fastfile
+    # used as a guide 
+
+
+    lane :deploy_hockey do |options|
+        #sigh(username: ENV['ENTERPRISE_USER'], app_identifier: "com.harbordev.CHANGEME", skip_install: true)
+        gym(
+            scheme: "CHANGEME", 
+            workspace: "CHANGEME.xcworkspace", 
+            codesigning_identity: 'iPhone Distribution: HarborDev LLC',
+            clean: true)    
+        #hockey(
+        #    api_token: 'CHANGEME',
+        #    notes: (options[:text] ? options[:text] : 'Automated Build'),
+        #    public_identifier: 'CHANGEME',
+        #    notify: options[:notify] ? options[:notify] : false)
+        appcenter_upload(
+            api_token: "<appcenter token>",
+            owner_name: "<your appcenter account name>",
+            app_name: "<your app name>",
+            apk: "<path to android build binary>",
+            notify_testers: true # Set to false if you don't want to notify testers of your new release (default: `false`)
+        )
+    end
+
+    lane :tests do
+        run_tests(scheme: "CHANGEME")
+    end
+
+end
